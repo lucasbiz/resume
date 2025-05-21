@@ -1,0 +1,34 @@
+<div class="uk-container uk-container-xsmall">
+
+  <section class="uk-text-left uk-margin-large-bottom uk-margin-large-top">
+    <h1 class="uk-text-bold"><span>Lucas Biz</span></h1>
+    <p class="uk-text-lead uk-text-default uk-text-bold">I’ve always loved tech and building cool stuff. Frontend development lets me mix creativity with code, and this
+    portfolio is where I share some of my favorite projects.</p>
+  </section>
+
+  <section class="uk-margin-large-top">
+    <h2>My work</h2>
+    <div class="uk-child-width-1-2@m uk-grid-match" uk-grid>
+      <div *ngFor="let project of projects">
+        <div class="custom-card uk-card uk-card-small uk-margin uk-height-1-1">
+          <div class="uk-card-body uk-flex uk-flex-column uk-height-1-1">
+            <h3 class="uk-card-title uk-flex uk-flex-middle">
+              {{ project.name }}
+              <img [src]="project.imageSource" alt="Card symbol" class="uk-margin-left" style="width: 24px; height: 24px;">
+            </h3>
+            <p class="uk-flex-1">{{ project.description }}</p>
+            <div class="uk-margin-top">
+              <a class="uk-button uk-button-default" [href]="project.link" target="_blank">See project</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="uk-text-center uk-margin-large-top uk-padding">
+    <p class="uk-text-small">© {{ currentYear }} Lucas Biz </p>
+  </footer>
+
+</div>
+
