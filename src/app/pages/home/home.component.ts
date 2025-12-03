@@ -5,7 +5,6 @@ import { CommonModule } from '@angular/common';
   selector: 'app-home',
   imports: [CommonModule],
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css'],
 })
 export class HomeComponent {
 
