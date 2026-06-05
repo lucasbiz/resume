@@ -43,6 +43,10 @@ Test framework is Karma + Jasmine. Test builder: `@angular/build:karma`.
 To add a test: place `*.spec.ts` next to the component/service under `src/`.
 Run full suite: `npm test` (runs in watch mode, use `--no-watch` for single run).
 
+## Permissões
+
+- **Sempre perguntar antes de editar qualquer arquivo.** Não fazer alterações sem confirmação explícita do usuário.
+
 ## Build / Deploy
 
 `ng build` outputs to `dist/portfolio/browser/`. Production build enables hashing, 500kB/1MB budget warnings.
