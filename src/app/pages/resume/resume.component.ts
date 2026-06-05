@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
+
 
 interface Experience {
   company: string;
@@ -26,7 +26,8 @@ interface Certification {
 
 @Component({
   selector: 'app-resume',
-  imports: [CommonModule],
+  imports: [],
+  changeDetection: ChangeDetectionStrategy.Eager,
   templateUrl: './resume.component.html',
 })
 export class ResumeComponent {

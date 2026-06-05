@@ -14,24 +14,26 @@
     <section class="my-12 animate-fade-in-up [animation-delay:200ms] opacity-0 [animation-fill-mode:forwards]">
       <h2 class="text-2xl mb-5 text-gray-900 dark:text-white font-semibold">My work</h2>
       <div class="grid md:grid-cols-2 gap-8">
-        <div *ngFor="let project of projects">
-          <div class="bg-white dark:bg-slate-800 rounded-lg p-6 flex flex-col h-full shadow-md hover:shadow-lg transition-shadow duration-200 border border-gray-200 dark:border-slate-700">
-            <h3 class="text-xl font-bold flex items-center text-gray-900 dark:text-white">
-              {{ project.name }}
-              <img [src]="project.imageSource" alt="Card symbol" class="ml-4" style="width: 24px; height: 24px;">
-            </h3>
-            <p class="flex-1 mt-4 text-gray-700 dark:text-gray-300">{{ project.description }}</p>
-            <div class="mt-6">
-              <a
-                class="inline-block bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-white font-bold py-2 px-4 rounded transition-colors"
-                [href]="project.link"
-                target="_blank"
-                rel="noopener noreferrer">
-                See project
-              </a>
+        @for (project of projects; track project) {
+          <div>
+            <div class="bg-white dark:bg-slate-800 rounded-lg p-6 flex flex-col h-full shadow-md hover:shadow-lg transition-shadow duration-200 border border-gray-200 dark:border-slate-700">
+              <h3 class="text-xl font-bold flex items-center text-gray-900 dark:text-white">
+                {{ project.name }}
+                <img [src]="project.imageSource" alt="Card symbol" class="ml-4" style="width: 24px; height: 24px;">
+              </h3>
+              <p class="flex-1 mt-4 text-gray-700 dark:text-gray-300">{{ project.description }}</p>
+              <div class="mt-6">
+                <a
+                  class="inline-block bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-white font-bold py-2 px-4 rounded transition-colors"
+                  [href]="project.link"
+                  target="_blank"
+                  rel="noopener noreferrer">
+                  See project
+                </a>
+              </div>
             </div>
           </div>
-        </div>
+        }
       </div>
     </section>
 
