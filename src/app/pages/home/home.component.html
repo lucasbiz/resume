@@ -12,29 +12,41 @@
     </section>
 
     <section class="my-12 animate-fade-in-up [animation-delay:200ms] opacity-0 [animation-fill-mode:forwards]">
-      <h2 class="text-2xl mb-5 text-gray-900 dark:text-white font-semibold">My work</h2>
-      <div class="grid md:grid-cols-2 gap-8">
-        @for (project of projects; track project) {
-          <div>
-            <div class="bg-white dark:bg-slate-800 rounded-lg p-6 flex flex-col h-full shadow-md hover:shadow-lg transition-shadow duration-200 border border-gray-200 dark:border-slate-700">
-              <h3 class="text-xl font-bold flex items-center text-gray-900 dark:text-white">
-                {{ project.name }}
-                <img [src]="project.imageSource" alt="Card symbol" class="ml-4" style="width: 24px; height: 24px;">
-              </h3>
-              <p class="flex-1 mt-4 text-gray-700 dark:text-gray-300">{{ project.description }}</p>
-              <div class="mt-6">
-                <a
-                  class="inline-block bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-white font-bold py-2 px-4 rounded transition-colors"
-                  [href]="project.link"
-                  target="_blank"
-                  rel="noopener noreferrer">
-                  See project
-                </a>
-              </div>
-            </div>
+      <div class="flex items-center justify-between mb-5">
+        <h2 class="text-2xl text-gray-900 dark:text-white font-semibold">Projects</h2>
+        <button
+          (click)="refresh()"
+          class="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-white text-sm font-semibold py-2 px-4 rounded transition-colors"
+        >
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
+          </svg>
+          Refresh
+        </button>
+      </div>
+
+      @if (projects$ | async; as projects) {
+        @if (projects.length > 0) {
+          <div class="grid md:grid-cols-2 gap-6">
+            @for (project of projects; track project.id) {
+              <app-project-card [project]="project" />
+            }
+          </div>
+        } @else {
+          <div class="text-center py-20">
+            <p class="text-gray-500 dark:text-gray-400 text-lg">No projects found.</p>
+            <p class="text-gray-400 dark:text-gray-500 text-sm mt-2">
+              Repositories with the "portfolio" topic will appear here.
+            </p>
           </div>
         }
-      </div>
+      } @else {
+        <div class="grid md:grid-cols-2 gap-6">
+          @for (_ of [1,2,3,4]; track _) {
+            <app-project-skeleton />
+          }
+        </div>
+      }
     </section>
 
     <footer class="flex flex-col my-8 py-4 mt-auto border-t border-gray-200 dark:border-slate-800">
